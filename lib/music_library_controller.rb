@@ -73,4 +73,13 @@ class MusicLibraryController
     end
   end
 
+  private
+  def sorted_songs
+    Song.all.sort_by { |song| song.artist.name }
+  end
+
+  def formatted_song(song)
+    "#{song.artist.name} - #{song.name} - #{song.genre.name}"
+  end
+
 end

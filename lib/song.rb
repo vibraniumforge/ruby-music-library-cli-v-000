@@ -1,5 +1,6 @@
 class Song
   extend Concerns::Findable
+  extend Concerns::Savable
   attr_accessor :name, :artist , :genre
   @@all=[]
 
@@ -9,18 +10,18 @@ class Song
     self.genre=genre if genre!=nil
   end
 
-  def self.all
-    @@all
-  end
-
-  def self.destroy_all
-    @@all.clear
-  end
-
-  def save
-    @@all<<self
-    self
-  end
+  # def self.all
+  #   @@all
+  # end
+  #
+  # def self.destroy_all
+  #   @@all.clear
+  # end
+  #
+  # def save
+  #   @@all<<self
+  #   self
+  # end
 
   def self.create(name)
     song=self.new(name)
@@ -55,5 +56,6 @@ class Song
   def self.create_from_filename(filename)
     new_from_filename(filename).save
   end
+
 
 end
